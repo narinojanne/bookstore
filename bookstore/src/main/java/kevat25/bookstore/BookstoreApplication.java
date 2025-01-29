@@ -1,5 +1,8 @@
 package kevat25.bookstore;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +13,8 @@ import kevat25.bookstore.domain.BookRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
+
+	private static final Logger log = LoggerFactory.getLogger(BookstoreApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
@@ -24,6 +29,7 @@ public class BookstoreApplication {
 			repository.save(new Book("Musta", "Naamio", "963258741", 1995, 15.25));
 			
 			for (Book book : repository.findAll()) {
+				log.info(book.toString());
 			}
 		};
 	}
