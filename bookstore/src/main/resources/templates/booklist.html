@@ -1,22 +1,29 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Studentlist</title>
+    <title>Booklist</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Students</h1>
+	<h1>Books</h1>
     <table>
 		<tr>
-		    <th>Name</th>
-		    <th>Email</th>
+		    <th>Title</th>
+		    <th>Author</th>
+            <th>Published</th>
+            <th>Price</th>
+            <th>ISBN</th>
 		</tr>  
     	<tr th:each = "book : ${books}">
     		<td th:text="${book.title}"></td>
     		<td th:text="${book.author}"></td>
- 				<td><a th:href="@{/delete/{id}(id=${student.id})}">Delete</a></td>    		
+            <td th:text="${book.publicationYear}"></td>
+            <td th:text="${book.price}"></td>
+            <td th:text="${book.isbn}"></td>
+ 				<td><a th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>    		
     	</tr>
      </table>
-	 <a href="/add">Add Student</a>    	
+	 <p><a href="/add">Add Book</a></p>
+     <p><a href="/index">Main Page</a></p>
 </body>
 </html>
