@@ -7,9 +7,13 @@ xmlns:th="http://www.thymeleaf.org">
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
-<h1>My Bookstore</h1>
+<div class="mx-auto" style="width: 400px;">
+    <h1>My Bookstore</h1>
 
-<p><a class="btn btn-success" href="/add">Add Book</a></p>
-<p><a class="btn btn-success" href="/booklist">List of Books</a></p>
+    <div class="d-grip gap-2">
+        <p><a class="btn btn-success" href="/add">Add Book</a></p>
+        <p><a class="btn btn-success" href="/booklist">List of Books</a></p>
+    </div>
+</div>
 </body>
 </html>
