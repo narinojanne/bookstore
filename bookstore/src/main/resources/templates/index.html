@@ -7,23 +7,25 @@ xmlns:th="http://www.thymeleaf.org">
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
-<div class="container text-center mb-3">
-    <div class="row">
-        <div class="col">
+<div class="container text-center justify-content-sm-center w-75 p-3">
+    
+        <div class="col-sm-12 mb-5">
             <h1>My Bookstore</h1>
+            <h3>Welcome to My Bookstore</h3>
         </div>
-    </div>
 
-    <div class="row justify-content-md-center mb-3">
-        <div class="col-6">
+        <!-- <div class="col-sm-12 mb-3">
             <a class="btn btn-success" href="/add">Add Book</a>
-        </div>       
-    </div>
-    <div class="row justify-content-md-center mb-3">
-        <div class="col-6">
+        </div>
+        <div class="col-sm-12 mb-3">
             <a class="btn btn-success" href="/booklist">List of Books</a>
-        </div> 
-    </div>
+        </div> -->
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <a class="btn btn-primary" href="/add">Add Book</a>
+            <a class="btn btn-primary" href="/booklist">List of Books</a>
+        </div>
+    
 </div>
 </body>
 </html>
