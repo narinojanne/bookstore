@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Bean;
 
 import kevat25.bookstore.domain.Book;
 import kevat25.bookstore.domain.BookRepository;
+import kevat25.bookstore.domain.Category;
+import kevat25.bookstore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -21,14 +23,23 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository repository) {
+	public CommandLineRunner bookDemo(BookRepository brepository, CategoryRepository crepository) {
 		return (args) -> {
-			repository.save(new Book("Aku", "Johnson", "123456789", 2025, 15.50));
-			repository.save(new Book("Ankka", "Kateson", "987654321", 2020, 20.15));	
+
+			Category category1 = new Category("Scifi");
+			Category category2 = new Category("Children");
+			Category category3 = new Category("History");
+
+			crepository.save(category1);
+			crepository.save(category2);
+			crepository.save(category3);
+
+			brepository.save(new Book("Aku", "Johnson", "123456789", 2025, 15.50, category1));
+			brepository.save(new Book("Ankka", "Kateson", "987654321", 2020, 20.15, category2));	
 			
-			repository.save(new Book("Musta", "Naamio", "963258741", 1995, 15.25));
+			brepository.save(new Book("Musta", "Naamio", "963258741", 1995, 15.25, category3));
 			
-			for (Book book : repository.findAll()) {
+			for (Book book : brepository.findAll()) {
 				log.info(book.toString());
 			}
 		};

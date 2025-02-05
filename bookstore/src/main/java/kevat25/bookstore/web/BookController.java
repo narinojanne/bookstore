@@ -1,6 +1,6 @@
 package kevat25.bookstore.web;
 
-import org.apache.logging.log4j.message.Message;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import kevat25.bookstore.domain.Book;
 import kevat25.bookstore.domain.BookRepository;
+import kevat25.bookstore.domain.CategoryRepository;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,12 +21,17 @@ import jakarta.validation.Valid;
 
 @Controller
 public class BookController {
-
+    
+    @Autowired
     private BookRepository repository;
 
-    public BookController(BookRepository repository) {
+    @Autowired
+    private CategoryRepository crepository;
+
+    /* public BookController(BookRepository repository, CategoryRepository crepository) {
         this.repository = repository;
-    }
+        this.crepository = crepository;
+    } */
 
     @GetMapping("/index")
     public String returnIndex(Model model) {
@@ -39,7 +46,8 @@ public class BookController {
 
     @RequestMapping(value = "/add")
     public String addBook(Model model){
-    	model.addAttribute("book", new Book());
+        model.addAttribute("book", new Book());
+        model.addAttribute("categories", crepository.findAll());
         return "addbook";
     }  
     
@@ -62,7 +70,7 @@ public class BookController {
     @RequestMapping(value = "/edit/{id}")
     public String showEditBook(@PathVariable("id") Long bookId, Model model){
         model.addAttribute("book", repository.findById(bookId));
-        model.addAttribute("departments", repository.findAll());
+        model.addAttribute("categories", crepository.findAll());
         return "editbook";
 }
 
