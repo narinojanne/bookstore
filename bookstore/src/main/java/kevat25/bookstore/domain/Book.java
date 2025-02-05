@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Book {
@@ -11,9 +13,13 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title, author, isbn;
+    private String author, isbn;
     private int publicationYear;
     private double price;
+
+    @NotEmpty(message = "Title field can not be empty")
+    @Size(min = 3, max = 150)
+    private String title;
 
     
     public Book() {

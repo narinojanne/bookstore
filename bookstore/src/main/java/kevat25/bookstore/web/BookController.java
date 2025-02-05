@@ -1,14 +1,19 @@
 package kevat25.bookstore.web;
 
+import org.apache.logging.log4j.message.Message;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import kevat25.bookstore.domain.Book;
 import kevat25.bookstore.domain.BookRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import jakarta.validation.Valid;
 
 
 
@@ -39,7 +44,11 @@ public class BookController {
     }  
     
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(Book book) {
+    public String save(@Valid @ModelAttribute("book") Book book, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("book", book);
+            return "addbook";
+        }
         repository.save(book);
         return "redirect:booklist";
     }
