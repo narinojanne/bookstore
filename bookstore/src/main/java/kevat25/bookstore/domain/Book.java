@@ -1,5 +1,7 @@
 package kevat25.bookstore.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,8 +25,9 @@ public class Book {
     @Size(min = 3, max = 150)
     private String title;
 
+    @JsonIgnoreProperties("books")    
     @ManyToOne
-    @JoinColumn(name = "category")
+    @JoinColumn(name = "categoryid")
     private Category category;
 
     

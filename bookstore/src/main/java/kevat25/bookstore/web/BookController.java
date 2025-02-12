@@ -78,11 +78,5 @@ public class BookController {
         model.addAttribute("categories", crepository.findAll());
         return "editbook";
     }
-
-    // RESTful service to get all books
-    @RequestMapping(value="/books", method=RequestMethod.GET)
-    public @ResponseBody List<Book> bookListRest() {
-        return (List<Book>) repository.findAll();
-    }
     
 }

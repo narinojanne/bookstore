@@ -16,7 +16,7 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long categoryid;
     private String name;
 
     @JsonIgnoreProperties("category")
@@ -32,12 +32,12 @@ public class Category {
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
+    public Long getCategoryid() {
+        return categoryid;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCategoryid(Long categoryid) {
+        this.categoryid = categoryid;
     }
 
     public String getName() {
@@ -58,7 +58,7 @@ public class Category {
 
     @Override
     public String toString() {
-        return "Category [id=" + id + ", name=" + name + "]";
+        return "Category [id=" + categoryid + ", name=" + name + "]";
     }
 
 }
