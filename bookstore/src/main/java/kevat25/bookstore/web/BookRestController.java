@@ -41,4 +41,10 @@ public class BookRestController {
         return bookRepository.save(newBook);
     }
 
+    // RESTful service to delete book by id
+    @RequestMapping(value = "/books/{id}", method = RequestMethod.DELETE)
+    public @ResponseBody void deleteBookRest(@PathVariable("id") Long bookId) {
+        bookRepository.deleteById(bookId);
+    }
+
 }
