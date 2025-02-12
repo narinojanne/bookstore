@@ -2,6 +2,7 @@ package kevat25.bookstore.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -19,7 +20,8 @@ public class Category {
     private Long categoryid;
     private String name;
 
-    @JsonIgnoreProperties("category")
+    // @JsonIgnoreProperties("category")
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private List<Book> books;
 
@@ -47,7 +49,7 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public List<Book> getBooks() {
         return books;
     }

@@ -22,7 +22,7 @@ public class BookRestController {
         this.bookRepository = bookRepository;
     }
 
-    // RESTful service to get all books
+    // RESTful service to get all books - GetMapping("/books") lyhyempi
     @RequestMapping(value = "/books", method = RequestMethod.GET)
     public List<Book> bookListRest() {
         return (List<Book>) bookRepository.findAll();

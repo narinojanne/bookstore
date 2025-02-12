@@ -25,7 +25,7 @@ public class Book {
     @Size(min = 3, max = 150)
     private String title;
 
-    @JsonIgnoreProperties("books")
+    // @JsonIgnoreProperties("books")
     @ManyToOne
     @JoinColumn(name = "categoryid")
     private Category category;
